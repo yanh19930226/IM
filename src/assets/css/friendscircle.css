@@ -1,0 +1,63 @@
+.friendscircle>.header-tab {
+  display: flex;
+  width: 100%;
+  position: fixed;
+  background-color: white;
+  z-index: 100;
+}
+
+.friendscircle>.header-tab>.tab-item {
+  padding-top: 1rem;
+  text-align: center;
+  width: 25%;
+  float: left;
+  background-color: white;
+  z-index: 100;
+}
+
+.friendscircle>.header-tab>.tab-item.tab-itemactived {
+  color: #24A7D3;
+}
+
+.friendscircle>.header-tab>.tab-item>.tab-spa {
+  width: 61px;
+  height: 29px;
+  background-color: #169bd5;
+  border-color: rgba(255, 255, 255, 1);
+  border-radius: 5px;
+  color: #ffffff;
+  position: relative;
+  top: -0.3rem;
+  left: 1rem;
+}
+
+.friendscircle>.header-tab>.tab-item>.tab-spa>.tab-txt {
+  top: 0.5rem;
+  left: 0.9rem;
+  position: absolute;
+}
+
+.friendscircle .list .list-item .content .imagecontainer .img-wrap {
+  justify-content: left;
+}
+
+
+
+
+.friendscircle ._v-container {
+  top: 2.5rem !important;
+}
+
+.friendscircle ._v-container>._v-content>.loading-layer {
+  position: absolute;
+  bottom: -4rem;
+}
+
+.friendscircle ._v-container ._v-content {
+  /* padding-bottom: 14rem; */
+  position: relative;
+}
+
+.friendscircle ._v-container ._v-content .loading-layer .no-data-text {
+  /* top: 170px; */
+}
