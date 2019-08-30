@@ -22,6 +22,9 @@
          <router-link to="/virtuallist" tag="li" class="li-item">
              <a href="">虚拟游</a>
         </router-link>
+        <router-link to="/test" tag="li" class="li-item">
+             <a href="">测试</a>
+        </router-link>
     </ul>
   </div>
 </template>

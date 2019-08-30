@@ -6,6 +6,7 @@ import PersonalInfoEdit from './components/PersonalInfoEdit.vue'
 import PersonalPost from './components/PersonalPost.vue'
 import PostDetail from './components/PostDetail.vue'
 import VirtualList from './components/virtuallist.vue'
+import Test from './components/test.vue'
 
 export default [{
     path: '/helloworld',
@@ -38,6 +39,11 @@ export default [{
   {
     path: '/postdetail/:id',
     component: PostDetail,
+    meta:{keepAlive: false}
+  },
+  {
+    path: '/test',
+    component: Test,
     meta:{keepAlive: false}
   },
   {
