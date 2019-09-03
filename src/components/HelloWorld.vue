@@ -1,6 +1,9 @@
 <template>
   <div class="hello">
     <ul>
+      <router-link to="/visited" tag="li" class="li-item">
+             <a href="">到此一游</a>
+        </router-link>
      <router-link to="/friendscircle" tag="li" class="li-item">
              <a href="">我的朋友圈</a>
         </router-link>

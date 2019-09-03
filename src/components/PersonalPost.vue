@@ -34,7 +34,7 @@
               </div>
               <div class="flex-item notime">
                 <div class="c-iconcontent c-iconcontent-love" @click="handleDZ(item.contentId)">
-                  <img class="c-icon" src="static/images/dz.png" />&nbsp;
+                  <img class="c-icon" src="/static/images/dz.png" />&nbsp;
                   <span v-text="item.dz"></span>
                 </div>
                 <router-link :to="{path: '/postdetail/' + item.contentId}" tag="div" class="c-iconcontent">

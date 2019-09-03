@@ -49,6 +49,7 @@
   width: 100%;
   box-sizing: border-box;
   float: left;
+  border-bottom: 1px solid rgba(228, 228, 228, 1);
 }
 
 .list .list-item .content .user-name {

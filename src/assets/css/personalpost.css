@@ -6,8 +6,8 @@
 
 .personalpost header .avt {
   border-radius: 53px;
-  width: 5rem;
-  height: 5rem;
+  width: 4.5rem;
+  height: 4.5rem;
   left: 1rem;
   bottom: -2rem;
   padding: 1px;
@@ -72,7 +72,7 @@
   padding-bottom: .4rem;
 }
 .personalpost .list .list-item .content .item-info {
-  border-bottom: 1px solid #ccc;
+  /* border-bottom: 1px solid #ccc; */
   margin: 0 1rem !important;
 }
 .personalpost .list .list-item .content .imagecontainer p

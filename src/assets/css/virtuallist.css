@@ -4,18 +4,20 @@
   display: flex;
   flex-wrap: nowrap;
   overflow-x: scroll;
-  margin: 0 1rem 0 1rem;
+  padding: 0 1rem 0 0;
 }
 .virtual .culture .culture-item {
   text-align: center;
   min-width: 76px;
   padding: 1rem 0;
   font-size: .9rem;
+  z-index: 100;
+  background-color: white;
 }
 .virtual .culture .culture-item.culture-itemactived{
-  color:#24A7D3;
-  border-bottom:.1rem solid #24A7D3;
-  font-size:.5rem;
+  color:#1989fa;;
+  border-bottom:.1rem solid #1989fa;;
+  font-size:.9rem;
 }
 .virtual .list {
   display: flex;
@@ -44,7 +46,7 @@
     font-size: .9rem;
 }
 .virtual ._v-container{
-  top:3rem;
+  top:3.5rem!important;
 }
 .virtual ._v-container>._v-content{
  

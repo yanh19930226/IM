@@ -3,7 +3,7 @@
 } */
 
 .personalinfo>header {
-    color: #666666;
+    /* color: #666666; */
     height: 6rem;
     padding-left: .4rem;
     border-bottom: 1px solid rgba(228, 228, 228, 1);
@@ -20,27 +20,27 @@
     width: 3.7rem;
     border-radius: 10rem;
 }
-.personalinfo>header>.userinfo {
+.personalinfo header .userinfo {
     height: 2rem;
     float: left;
     width: 50%;
     margin-left: .3rem;
 }
-.personalinfo>header>.userinfo>p {
+.personalinfo header .userinfo p {
     font-size: 0.28rem;
 }
 
-.personalinfo>header>.userinfo>p:first-child {
+.personalinfo header .userinfo p:first-child {
     font-size: .9rem;
     padding-top: 2.1rem;
     margin-bottom: 7px;
 }
 
-.personalinfo>header>.userinfo>p:last-child span {
+.personalinfo header .userinfo p:last-child span {
     margin-left: 1rem;
 }
 
-.personalinfo>header>.right_icon {
+.personalinfo header .right_icon {
     float: left;
     width: 21%;
     line-height: 2rem;
@@ -51,46 +51,55 @@
 
 }
 
-.personalinfo>header>.right_icon>p {
+.personalinfo header .right_icon p {
     text-align: right;
 }
 
-
-
-.personalinfo>aside {
+.personalinfo aside {
     /* margin-top: .2rem; */
 }
 
-.personalinfo>aside>ul {
+.personalinfo aside ul {
     font-size: .9rem;
     line-height: .8rem;
     color: #000;
     margin: 0 .5rem !important;
 }
 
-.personalinfo>aside>ul>li {
+.personalinfo aside ul li {
     text-align: left;
     width: 96%;
     margin: 0 auto;
     background: #fff;
     padding: 1.2rem 0;
     position: relative;
+    border-bottom: 1px solid rgba(228, 228, 228, 1);
+}
+.personalinfo aside ul li>div{
+  float: right;
+  margin-right: .4rem;
 }
 
-.personalinfo>aside>ul>li>span {
+.personalinfo aside ul li>div span {
     font-family: '微软雅黑';
     font-weight: 410;
     font-style: normal;
-    font-size: .8rem;
+    font-size: .9rem;
     color: #999999;
     text-align: right;
     line-height: 1rem;
-    float: right;
 }
-.personalinfo>aside>ul>li>.tagdiv {
+.personalinfo aside ul li i{
+    float:right;
+    font-size: 1.6rem;
+    color: #999999;
+    position: relative;
+    bottom: .43rem;
+}
+.personalinfo aside ul li .tagdiv {
     line-height: 20px;
     position: absolute;
-    right: 0px;
+    right: .6rem;
     top: 0px;
     width: 39px;
     height: 20px;
@@ -106,10 +115,10 @@
     text-align: center;
 }
 
-.personalinfo>aside>ul>li>.dotdiv {
+.personalinfo aside ul li .dotdiv {
     position: absolute;
-    right: 0px;
-    top: 19px;
+    right: .6rem;
+    top: 20px;
     width: 10px;
     height: 10px;
     background: inherit;

@@ -1,23 +1,32 @@
-const state={
-    headShow:true,
-    loadingShow:false    
+const state = {
+  headShow: false,
+  loadingShow: false
 };
-const mutations={
-    showLoading(state){
-        state.loadingShow=true;
-    },
-    hideLoading(state){
-        state.loadingShow=false;
-    }
+const mutations = {
+  showHeader(state) {
+    state.headShow = true;
+  },
+  hideHeader(state) {
+    state.headShow = false;
+  },
+  showLoading(state) {
+    state.loadingShow = true;
+  },
+  hideLoading(state) {
+    state.loadingShow = false;
+  }
 };
-const getters={
-    loadingShow(state){
-		return state.loadingShow;
-    }
+const getters = {
+  headShow(state) {
+    return state.headShow;
+  },
+  loadingShow(state) {
+    return state.loadingShow;
+  }
 };
 
-export default{
-	state,
-	mutations,
-	getters
+export default {
+  state,
+  mutations,
+  getters
 }
