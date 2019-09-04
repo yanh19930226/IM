@@ -14,6 +14,8 @@
           :class="index==0?['list-item','first-item']:['list-item']"
           v-for="(item,index) in PostInfo"
           :key="index"
+          preview
+          preview-text="aa"
         >
           <div class="content">
             <p class="item-time" v-text="item.time"></p>
@@ -51,6 +53,10 @@
 </template>
 <script>
 require("../assets/css/personalpost.css");
+import Vue from "vue";
+import preview from 'vue-photo-preview'
+import 'vue-photo-preview/dist/skin.css'
+Vue.use(preview)
 export default {
   data() {
     return {

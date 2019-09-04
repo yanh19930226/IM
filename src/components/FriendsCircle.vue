@@ -39,6 +39,7 @@
                 <img
                   class="list-img"
                   :src="imageitem.imgUrl"
+                  :preview="item.contentId" :preview-text="item.title"
                   v-for="(imageitem,index) in item.imageList"
                   :key="index"
                 />
@@ -76,6 +77,9 @@
 require("../assets/css/friendscircle.css");
 import VueScroller from "vue-scroller";
 import Vue from "vue";
+// import preview from 'vue-photo-preview'
+// import 'vue-photo-preview/dist/skin.css'
+// Vue.use(preview)
 Vue.use(VueScroller);
 export default {
   data() {

@@ -13,7 +13,15 @@
           <div class="imagecontainer">
             <p v-text="postdetail.title"></p>
             <div class="img-wrap">
-              <img class="list-img" :src="item.imgUrl" v-for="(item,index) in postdetail.imageList" :key=index />
+              <!-- <img src="/static/images/fj.png" preview preview-text="描述"> -->
+              <img
+                class="list-img"
+                preview
+                preview-text="postdetail.title"
+                :src="item.imgUrl"
+                v-for="(item,index) in postdetail.imageList"
+                :key="index"
+              />
             </div>
           </div>
           <div class="item-info">
@@ -179,11 +187,15 @@
   </div>
 </template>
 <script>
+import Vue from "vue";
+import preview from "vue-photo-preview";
+import "vue-photo-preview/dist/skin.css";
+Vue.use(preview);
 export default {
   data() {
     return {
-      userInfo:"",
-      postdetail:""
+      userInfo: "",
+      postdetail: ""
     };
   },
   mounted() {
@@ -202,14 +214,17 @@ export default {
           console.log(err);
         });
     },
-    fetchdata(id){
-        var _this=this;
-				this.$http.get('/static/data/postdetail.json').then(function(res){
-             let index=parseInt(id)-1;
-						 _this.postdetail = res.data[index];
-				}).catch(function(err){
-					console.log(err);
-				});
+    fetchdata(id) {
+      var _this = this;
+      this.$http
+        .get("/static/data/postdetail.json")
+        .then(function(res) {
+          let index = parseInt(id) - 1;
+          _this.postdetail = res.data[index];
+        })
+        .catch(function(err) {
+          console.log(err);
+        });
     }
   },
   watch: {},
@@ -218,5 +233,10 @@ export default {
 </script>
 
 <style>
-
+.postdetail .list .list-item .content .imagecontainer .img-wrap {
+  justify-content: flex-start;
+}
+.postdetail .list .list-item .content .imagecontainer p {
+  font-size: 0.9rem;
+}
 </style>

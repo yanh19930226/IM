@@ -45,26 +45,36 @@
 </template>
 <script>
 require("../../static/lib/city/css/city.css");
-require("../../static/lib/city/css/city.css");
 export default {
+  name: "area-select",
   data() {
     return {
       isShowCitys: true,
       initY: 0,
+      touch: {},
       location: "定位中",
       cityData: cityData, // 数据源
       cityWrapper: document.querySelector(".city-wrapper-hook"),
+      cityScroller: document.querySelector(".scroller-hook"),
       shortcut: document.querySelector(".shortcut-hook"),
-      scroll: null,
+      anchorMap: {},
+      scroll: null
     };
   },
   props: {
-    areaName: {
+    isShow: {
+      type: Boolean,
+      default: false
+    },
+    currentAreaName: {
       type: String
     }
   },
   created() {},
   methods: {
+    chooseCity(e) {
+      this.initY = e.changedTouches[0].screenY;
+    },
     touchUp(e) {
       let currentY = e.changedTouches[0].screenY,
         cha = currentY - this.initY,
@@ -72,6 +82,7 @@ export default {
       if (-10 < cha && cha < 10) {
         this.isShowCitys = false;
         this.location = item.name;
+        this.$emit("on-area-select", this.location);
       }
     },
     initCities: function() {
@@ -93,6 +104,23 @@ export default {
         probeType: 3
       });
       v.scroll.scrollTo(0, 0);
+    },
+    touchIndex: function(e) {
+      let v = this;
+      let anchor = e.target.getAttribute("data-anchor");
+      let firstTouch = e.touches[0];
+      v.touch.y1 = firstTouch.pageY;
+      v.touch.anchor = anchor;
+      v.scrollTo(anchor);
+    },
+    scrollTo: function(anchor) {
+      let v = this;
+      v.cityScroller = document.querySelector(".scroller-hook");
+      var maxScrollY = v.cityWrapper.clientHeight - v.cityScroller.clientHeight;
+      var y = Math.min(0, Math.max(maxScrollY, v.anchorMap[anchor]));
+      if (typeof y !== "undefined") {
+        v.scroll.scrollTo(0, y);
+      }
     }
   },
   mounted: function() {

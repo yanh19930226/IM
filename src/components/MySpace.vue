@@ -29,7 +29,7 @@
           <div class="imagecontainer">
             <p>他/她的动态</p>
             <div class="img-wrap">
-              <img class="list-img" :src="item.imgUrl" v-for="(item,index) in myspace.postList" :key=index />
+              <img class="list-img" :src="item.imgUrl" preview="myspace.userid" :preview-text="item.title" v-for="(item,index) in myspace.postList" :key=index />
             </div>
           </div>
         </div>
@@ -52,6 +52,10 @@
 </template>
 <script>
 require('../assets/css/myspace.css'); 
+import Vue from "vue";
+import preview from 'vue-photo-preview'
+import 'vue-photo-preview/dist/skin.css'
+Vue.use(preview)
 export default {
   data() {
     return {

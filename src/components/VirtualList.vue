@@ -16,12 +16,22 @@
     </div>
     <scroller :on-refresh="refresh" :on-infinite="infinite" ref="myscroller">
       <div class="list">
-        <div class="virtual-item" v-for="(item,index) in virtuallist" :key="index">
+        <div
+          class="virtual-item"
+          v-for="(item,index) in virtuallist"
+          :key="index"
+          @click="virtualdetailpoup(item)">
           <img :src="item.imgUrl" />
           <p v-text="item.virtualname"></p>
         </div>
       </div>
     </scroller>
+    <van-dialog v-model="showDialog" :title="title" @confirm="virtualDialogConfirm">
+      <van-radio-group v-model="radio">
+        <van-radio name="1">720全景</van-radio>
+        <van-radio name="2">vr视频</van-radio>
+      </van-radio-group>
+    </van-dialog>
   </div>
 </template>
 <script>
@@ -29,6 +39,10 @@ require("../assets/css/virtuallist.css");
 export default {
   data() {
     return {
+      title:"",
+      showDialog: false,
+      radio: "1",
+      
       pageIndex: 1,
       pageSize: 8,
       noData: false,
@@ -115,6 +129,15 @@ export default {
       this.pageIndex = 1;
       this.pageSize = 8;
       this.fetchdata();
+    },
+    //详细
+    virtualdetailpoup(item) {
+      this.title=item.virtualname;
+      this.showDialog = true;
+    },
+    virtualDialogConfirm()
+    {
+      alert(this.radio);
     }
   },
   watch: {},
@@ -123,4 +146,11 @@ export default {
 </script>
 
 <style>
+.van-dialog__header {
+    padding: 24px 0;
+}
+.van-radio-group {
+  display: flex;
+  justify-content: space-around;
+}
 </style>

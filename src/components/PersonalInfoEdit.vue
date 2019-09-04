@@ -3,29 +3,33 @@
     <aside>
       <ul>
         <li class="li-item">
-          <a href="#" class="avt">头像</a>
+          <span class="title">头像</span>
           <div class="left-content">
             <img :src="personalinfoedit.avt" />
             <i class="iconfont icon-angle-right"></i>
           </div>
         </li>
         <li class="li-item">
-          <a href="#" class="nickname">昵称</a>
+          <span class="title">昵称</span>
           <div class="left-content">
             <input
               type="text"
               name="nickname"
               class="inputleftnone"
               v-model="personalinfoedit.username"
+              @blur.prevent="edit()"
             />
           </div>
         </li>
-        <li class="li-item">
-          <a href="#" class="gender">性别</a>
-          <span v-text="personalinfoedit.gender">男</span>
+        <li class="li-item" @click="showGender=true">
+          <span class="title">性别</span>
+          <div class="left-content">
+            <p v-text="personalinfoedit.gender"></p>
+            <i class="iconfont icon-angle-right"></i>
+          </div>
         </li>
         <li class="li-item">
-          <a href="#" class="birthday">出生年月</a>
+          <span class="title">出生年月</span>
           <div class="left-content">
             <input
               type="text"
@@ -40,33 +44,35 @@
           </div>
         </li>
         <li class="li-item">
-          <a href="#" class="mail">邮箱</a>
+          <span class="title">邮箱</span>
           <div class="left-content">
             <input
               type="text"
               name="nickname"
               v-model="personalinfoedit.email"
               class="inputleftnone"
+              @blur.prevent="edit()"
             />
           </div>
         </li>
         <li class="li-item">
-          <a href="#" class="mobile">手机号码</a>
+          <span class="title">手机号码</span>
           <div class="left-content">
             <input
               type="text"
               name="nickname"
               v-model="personalinfoedit.mobile"
               class="inputleftnone"
+              @blur.prevent="edit()"
             />
           </div>
         </li>
-        <li class="li-item">
-          <a href="#" class="address">所在地</a>
-          <router-link to="/city" tag="div" class="left-content">
-            <input type="text" name="nickname" v-model="personalinfoedit.address" />
+        <li class="li-item" @click="showArea=true">
+          <span class="title">所在地</span>
+          <div class="left-content">
+            <p name="address" v-text="personalinfoedit.address"></p>
             <i class="iconfont icon-angle-right"></i>
-          </router-link>
+          </div>
         </li>
       </ul>
       <van-popup v-model="showPicker" position="bottom">
@@ -77,6 +83,8 @@
           @confirm="onConfirm"
         />
       </van-popup>
+      <area-select v-if="showArea" @on-area-select="onSelected"></area-select>
+      <gender-select v-if="showGender" :currenGender="personalinfoedit.gender" @on-gender-select="onSelectedGender"></gender-select>
     </aside>
     <div class="info">以下所填信息是我们为您的文化旅游行程个性化定制与信息智能推送的依据</div>
   </div>
@@ -90,6 +98,8 @@ export default {
       personalinfoedit: "",
       value: new Date(),
       showPicker: false,
+      showArea: false,
+      showGender: false
     };
   },
   mounted() {
@@ -115,14 +125,50 @@ export default {
       }
       return value;
     },
+    edit() {
+      var user = {};
+      var _this = this;
+      this.$http
+        .get("/static/data/personalinfoedit.json", {
+          Id:"",
+          avt:"",
+          userName: "Fred",
+          gender: "女",
+          birthdate:"",
+          email:"",
+          mobile:"",
+          address:""
+        })
+        .then(function(res) {
+          // alert("hellow");
+        })
+        .catch(function(err) {
+          console.log(err);
+        });
+    },
+    //时间
     onConfirm(value) {
       this.value = value;
+      this.edit();
       this.showPicker = false;
+    },
+    //地区
+    onSelected(data) {
+      this.personalinfoedit.address = data;
+      this.edit();
+      this.showArea = false;
+    },
+    //性别
+    onSelectedGender(data) {
+      this.personalinfoedit.gender = data==true?"男":"女";
+      this.edit();
+      this.showGender = false;
     }
   },
   watch: {},
   components: {
-    Area: () => import("../components/Area"),
+    AreaSelect: () => import("../components/AreaSelect"),
+    GenderSelect: () => import("../components/GenderSelect")
   }
 };
 </script>
